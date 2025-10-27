@@ -1,0 +1,68 @@
+# ~/dotfiles/pkglist.txt
+# (Комментарии игнорируются)
+
+# --- Система ---
+openssh
+networkmanager
+git
+curl
+wget
+grub
+efibootmgr # Если EFI
+man-db
+man-pages
+texinfo
+vi
+vim
+sudo
+
+# --- Утилиты ФС ---
+btrfs-progs
+exfatprogs
+e2fsprogs
+ntfs-3g
+
+# --- Графика (Xorg) ---
+xorg
+
+# --- Драйверы Intel ---
+mesa
+lib32-mesa
+vulkan-intel
+xf86-video-intel
+
+# --- Основные приложения ---
+firefox
+ranger # Файловый менеджер
+bat # 'cat' с подсветкой
+alacritty # Терминал
+telegram-desktop
+fastfetch
+
+# --- Утилиты (CLI) ---
+jp2a
+img2pdf
+ueberzug # Для превью картинок в ranger
+pacman-contrib # (для 'paccache' и др.)
+
+# --- Окружение (WM) ---
+bspwm
+sxhkd
+rofi
+polybar
+picom
+dunst # Уведомления
+libnotify
+feh # Установка обоев
+upower # Для polybar (батарея)
+libinput
+
+# --- Bluetooth ---
+bluez
+bluez-utils
+blueman
+
+# --- Шрифты и темы ---
+papirus-icon-theme
+ttf-opensans
+ttf-hack-nerd

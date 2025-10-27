@@ -1,0 +1,143 @@
+#!/bin/sh
+# ======================================================================
+# SXHKDRC — Конфигурационный файл горячих клавиш
+# ----------------------------------------------------------------------
+# Менеджер горячих клавиш : sxhkd
+# Оконный менеджер         : bspwm
+# ======================================================================
+
+# ======================================================================
+# 1. НЕЗАВИСИМЫЕ ГОРЯЧИЕ КЛАВИШИ
+# ======================================================================
+
+# Запуск терминала Alacritty
+super + Return
+    alacritty
+
+# Запуск меню приложений (Rofi)
+super + @space
+    rofi -show drun -theme $HOME/.config/rofi/themes/nord/nord.rasi
+
+# Перезагрузка конфигурации sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Перезагрузка Polybar
+super + shift + p
+	sh $HOME/.config/polybar/launch.sh
+
+# Смена языка
+Alt_L + shift
+	sh $HOME/bin/change_language.sh
+# Смена языка
+Shift_L + alt
+	sh $HOME/bin/change_language.sh
+
+# ======================================================================
+# 2. УПРАВЛЕНИЕ BSPWM
+# ======================================================================
+
+# Выход / Перезапуск bspwm
+super + alt + {q,r}
+    bspc {quit,wm -r}
+
+# Закрыть / Уничтожить текущее окно
+super + {_,shift + }c
+    bspc node -{c,k}
+
+# Переключение layout (tiled/monocle)
+super + m
+    bspc desktop -l next
+
+# Отправить помеченный узел к предустановленному
+super + y
+    bspc node newest.marked.local -n newest.!automatic.local
+
+# Поменять местами текущий узел и самое большое окно
+super + g
+    bspc node -s biggest.window
+
+
+# ======================================================================
+# 3. СОСТОЯНИЯ И ФЛАГИ ОКНА
+# ======================================================================
+
+# Установить состояние окна (Tiled, Pseudo-tiled, Floating, Fullscreen)
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Установить флаги узла (Marked, Locked, Sticky, Private)
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+
+
+# ======================================================================
+# 4. ФОКУС / ПЕРЕКЛЮЧЕНИЕ / SWAP
+# ======================================================================
+
+# Фокусировка / Перемещение узла
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+# Фокусировка по иерархии
+super + {p,b,comma,period}
+    bspc node -f @{parent,brother,first,second}
+
+# Следующее / Предыдущее окно
+super + {_,shift + }c
+    bspc node -f {next,prev}.local.!hidden.window
+
+# Следующий / Предыдущий рабочий стол
+super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+
+# Последний активный узел / рабочий стол
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+# Старый / Новый узел в истории
+super + {o,i}
+    bspc wm -h off; bspc node {older,newer} -f; bspc wm -h on
+
+# Фокус / Отправка окна на рабочий стол (1–9, 0)
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+# ======================================================================
+# 5. ПРЕДВЫБОР (Preselect)
+# ======================================================================
+
+# Предвыбор направления
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# Предвыбор соотношения деления
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# Отмена предвыбора текущего узла
+super + ctrl + space
+    bspc node -p cancel
+
+# Отмена предвыбора всех узлов
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+# ======================================================================
+# 6. РАЗМЕР И ПЕРЕМЕЩЕНИЕ (Resize / Move)
+# ======================================================================
+
+# Увеличение размера окна
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Уменьшение размера окна
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Перемещение плавающего окна
+super + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+

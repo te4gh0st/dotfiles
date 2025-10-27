@@ -1,0 +1,6 @@
+# ~/dotfiles/aurlist.txt
+# (Yay будет установлен автоматически, если его нет)
+
+betterlockscreen
+bibata-cursor-theme
+networkmanager-dmenu
