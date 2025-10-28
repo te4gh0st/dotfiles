@@ -29,7 +29,7 @@ xorg
 mesa
 lib32-mesa
 vulkan-intel
-xf86-video-intel
+# xf86-video-intel
 
 # --- Основные приложения ---
 firefox
