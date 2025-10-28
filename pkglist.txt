@@ -62,6 +62,13 @@ bluez
 bluez-utils
 blueman
 
+# --- Звук ---
+pipewire # Cам сервер
+pipewire-pulse # Заменяет pulseaudio. Приложения, которые ищут PulseAudio, будут перенаправлены на PipeWire.
+pipewire-alsa # Делает то же самое для приложений, использующих ALSA
+pipewire-jack # Заменяет jack
+wireplumber # Рекомендуемый менеджер сессий для PipeWire.
+
 # --- Шрифты и темы ---
 papirus-icon-theme
 ttf-opensans
