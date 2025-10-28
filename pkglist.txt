@@ -73,3 +73,8 @@ wireplumber # Рекомендуемый менеджер сессий для Pi
 papirus-icon-theme
 ttf-opensans
 ttf-hack-nerd
+
+
+# --- xcolor-pick [script] Dependens ---
+gpick
+xclip

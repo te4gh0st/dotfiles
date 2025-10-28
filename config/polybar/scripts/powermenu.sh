@@ -2,10 +2,10 @@
 # ~/.config/polybar/scripts/powermenu.sh
 
 # Иконки (Nerd Font)
-shutdown=" Выключение"
-reboot=" Перезагрузка"
-lock=" Блокировка"
-logout=" Выход"
+shutdown="  Выключение"
+reboot="  Перезагрузка"
+lock="  Блокировка"
+logout="  Выход"
 
 # Опции
 options="$shutdown\n$reboot\n$lock\n$logout"

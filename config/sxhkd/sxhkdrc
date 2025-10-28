@@ -16,7 +16,7 @@ super + Return
 
 # Запуск меню приложений (Rofi)
 super + @space
-    rofi -show drun -theme $HOME/.config/rofi/themes/nord/nord.rasi
+    rofi -show drun
 
 # Перезагрузка конфигурации sxhkd
 super + Escape
@@ -141,3 +141,34 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# --- DEV ---
+# --- 4. Управление системой ---
+# Заблокировать экран (используем betterlockscreen)
+super + l
+    betterlockscreen -l
+
+# --- 5. Аппаратные клавиши (Громкость) ---
+# (Требует 'pulseaudio-ctl', который у тебя уже должен быть)
+
+# Увеличить громкость
+#XF86AudioRaiseVolume
+#    pulseaudio-ctl up 5
+
+# Уменьшить громкость
+#XF86AudioLowerVolume
+#    pulseaudio-ctl down 5
+
+# Вкл/Выкл звук
+#XF86AudioMute
+#    pulseaudio-ctl mute
+
+# --- 6. Аппаратные клавиши (Яркость) ---
+# (Требует 'brightnessctl': sudo pacman -S brightnessctl)
+
+# Увеличить яркость
+#XF86MonBrightnessUp
+#    brightnessctl set 5%+
+
+# Уменьшить яркость
+#XF86MonBrightnessDown
+#    brightnessctl set 5%-
